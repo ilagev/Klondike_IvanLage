@@ -1,20 +1,17 @@
 
 public class Klondike {
     
-    private StartController startController;
-    
     private Tableau tableau;
     
     private GameView gameView;
     
     private Klondike() {
-        this.startController = new StartController();
         this.tableau = new Tableau();
         this.gameView = new GameView();
     }
     
     public void play() {
-        startController.setup();
+        tableau.setup();
         gameView.play();
     }
     
