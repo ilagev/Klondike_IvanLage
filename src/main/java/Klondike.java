@@ -3,20 +3,19 @@ public class Klondike {
     
     private Tableau tableau;
     
+    private MoveController moveController;
+    
     private GameView gameView;
     
     private Klondike() {
         this.tableau = new Tableau();
-        this.gameView = new GameView();
+        this.moveController = new MoveController(tableau);
+        this.gameView = new GameView(moveController);
     }
     
     public void play() {
         tableau.setup();
         gameView.play();
-    }
-    
-    public Tableau getTableau() {
-        return this.tableau;
     }
     
     public static void main(String[] args) {

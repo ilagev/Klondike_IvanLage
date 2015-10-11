@@ -11,21 +11,21 @@ import cards.Suit;
 import cards.Value;
 
 public class Tableau {
-    
+
     public static final int PILES_NUMBER = 7;
-    
+
     public static final int FOUNDATIONS_NUMBER = 4;
-    
+
     private Map<Integer, CardSet> piles;
-    
-    private Map<Integer, CardSet>  foundations;
-    
+
+    private Map<Integer, CardSet> foundations;
+
     private CardSet deck;
-    
+
     private CardSet waste;
-    
+
     private CardSetFactory cardSetFactory;
-    
+
     public Tableau() {
         cardSetFactory = new CardSetFactory();
         createPiles();
@@ -33,27 +33,27 @@ public class Tableau {
         this.deck = this.cardSetFactory.getDeck();
         this.waste = this.cardSetFactory.getWaste();
     }
-    
+
     private void createPiles() {
         piles = new HashMap<Integer, CardSet>();
         for (int i = 1; i <= PILES_NUMBER; i++) {
             piles.put(i, cardSetFactory.getPile(PILES_NUMBER - 1));
         }
     }
-    
+
     private void createFoundations() {
         foundations = new HashMap<Integer, CardSet>();
         for (int i = 1; i <= FOUNDATIONS_NUMBER; i++) {
             foundations.put(i, cardSetFactory.getFoundation());
         }
     }
-    
+
     public void setup() {
         List<Card> cardsSet = this.generateCards();
         Collections.shuffle(cardsSet);
-        
+        // TODO
     }
-    
+
     private List<Card> generateCards() {
         List<Card> cards = new ArrayList<Card>();
         for (Value value : Value.values()) {
@@ -63,7 +63,5 @@ public class Tableau {
         }
         return cards;
     }
-    
-    
 
 }
