@@ -31,5 +31,9 @@ public class Foundation extends CardSet {
     public boolean empty() {
         return this.cards.isEmpty();
     }
+    
+    public int size() {
+        return this.cards.size();
+    }
 
 }

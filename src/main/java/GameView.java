@@ -7,13 +7,14 @@ public class GameView {
 
     Menu menu;
     
-    private static final int EXIT_OPTION = 9;  
+    private int exitOption;  
 
     public GameView(MoveController moveController) {
         this.moveController = moveController;
         this.tableauView = new TableauView(moveController.getTableau());
         this.menu = new Menu();
         this.setupMenu();
+        this.exitOption = menu.keys().length + 1;
     }
 
     private void setupMenu() {
@@ -28,20 +29,19 @@ public class GameView {
     }
 
     public void play() {
-        String[] keys;
+        String[] keys = this.menu.keys();
         int option = -1;
-        LimitedIntDialog optionDialog = new LimitedIntDialog("Opcion: ", 1, 9);
+        LimitedIntDialog optionDialog = new LimitedIntDialog("Opcion: ", 1, exitOption);
 
         do {
             tableauView.show();
             
-            keys = this.menu.keys();
             this.showMenu(keys);
             option = optionDialog.read();
             
-            if (option == EXIT_OPTION) {
+            if (option == exitOption) {
                 MoveController.EXIT_FLAG = true;
-                IO.write("Thanks for playing!!");
+                IO.write("Gracias por jugar!!");
             } else {
                 menu.execute(keys[option - 1]); // index 0..N-1 vs 1..N
             }
@@ -51,7 +51,7 @@ public class GameView {
     private void showMenu(String[] keys) {
         int optionNumber = 1;
         for (String key : keys) {
-            IO.writeln("[" + optionNumber + ".]" + key);
+            IO.writeln("[" + optionNumber + ".] " + key);
             optionNumber++;
         }
         IO.writeln("[" + optionNumber + ".] Salir");

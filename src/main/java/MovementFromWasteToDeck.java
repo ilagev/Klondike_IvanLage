@@ -12,9 +12,7 @@ public class MovementFromWasteToDeck extends Movement {
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        IO.write("Waste to deck: coming soon...");
-        moveController.moveFromWasteToDeck();
+        this.moveController.moveFromWasteToDeck();
     }
 
 }

@@ -51,7 +51,25 @@ public class Tableau {
     public void setup() {
         List<Card> cardsSet = this.generateCards();
         Collections.shuffle(cardsSet);
-        // TODO
+        this.dispenseForPiles(cardsSet);
+        this.dispenseForDeck(cardsSet);
+    }
+    
+    private void dispenseForPiles(List<Card> cardsSet) {
+        CardSet pile;
+        for (int i = 1; i <= PILES_NUMBER; i++) {
+            pile = piles.get(i);
+            for (int j = 1; j <= i; j++) {
+                pile.insert(cardsSet.remove(0));
+            }
+        }
+    }
+
+    private void dispenseForDeck(List<Card> cardsSet) {
+        for (Card card : cardsSet) {
+            this.deck.insert(card);
+        }
+        cardsSet.clear();
     }
 
     private List<Card> generateCards() {
@@ -62,6 +80,22 @@ public class Tableau {
             }
         }
         return cards;
+    }
+    
+    public Map<Integer, CardSet> getPiles() {
+        return piles;
+    }
+
+    public Map<Integer, CardSet> getFoundations() {
+        return foundations;
+    }
+
+    public CardSet getDeck() {
+        return deck;
+    }
+
+    public CardSet getWaste() {
+        return waste;
     }
 
 }

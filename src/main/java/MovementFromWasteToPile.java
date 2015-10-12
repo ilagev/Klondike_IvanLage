@@ -14,7 +14,7 @@ public class MovementFromWasteToPile extends Movement {
     public void execute() {
         // TODO Auto-generated method stub
         IO.write("Waste to pile: coming soon...");
-        moveController.moveFromWasteToFoundation();
+        moveController.moveFromWasteToPile();
     }
     
 }

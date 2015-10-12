@@ -12,9 +12,13 @@ public class MovementFromWasteToFoundation extends Movement {
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        IO.write("Waste to foundation: coming soon...");
-        moveController.moveFromWasteToFoundation();
+        LimitedIntDialog dialog = new LimitedIntDialog("Numero de palo? ", 1, Tableau.FOUNDATIONS_NUMBER);
+        int foundation = dialog.read();
+        if (moveController.isPossibleMoveFromWasteToFoundation(foundation)) {
+            moveController.moveFromWasteToFoundation(foundation);
+        } else {
+            IO.writeln("[ERROR] No se puede mover al palo " + foundation);
+        }
     }
 
 }

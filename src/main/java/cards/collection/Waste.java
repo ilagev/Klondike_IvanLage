@@ -7,8 +7,10 @@ import cards.Card;
 
 public class Waste extends CardSet {
     
-private Queue<Card> cards;
+    public static final int MAX_CARDS = 3;
     
+    private Queue<Card> cards;
+
     public Waste() {
         this.cards = new LinkedList<Card>();
     }
@@ -31,6 +33,10 @@ private Queue<Card> cards;
     @Override
     public boolean empty() {
         return this.cards.isEmpty();
+    }
+    
+    public int size() {
+        return this.cards.size();
     }
 
 }

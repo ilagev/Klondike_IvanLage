@@ -12,4 +12,6 @@ public abstract class CardSet {
     
     public abstract boolean empty();
     
+    public abstract int size();
+    
 }

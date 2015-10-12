@@ -38,5 +38,9 @@ public class Pile extends CardSet {
     public int getDowncards() {
         return downcards;
     }
+    
+    public int size() {
+        return this.cards.size();
+    }
 
 }
