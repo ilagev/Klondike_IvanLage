@@ -17,5 +17,37 @@ public class MoveController {
         // TODO
         return false;
     }
+    
+    public void moveFromDeckToWaste() {
+        // TODO
+    }
+    
+    public void moveFromFoundationToPile() {
+        // TODO
+    }
+    
+    public void moveFromPileToFoundation() {
+        // TODO
+    }
+    
+    public void moveFromPileToPile() {
+        // TODO
+    }
+    
+    public void moveFromWasteToDeck() {
+        // TODO
+    }
+    
+    public void moveFromWasteToFoundation() {
+        // TODO
+    }
+    
+    public void moveFromWasteToPile() {
+        // TODO
+    }
+    
+    public void moveDiscover() {
+        // TODO
+    }
 
 }

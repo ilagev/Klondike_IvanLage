@@ -8,7 +8,7 @@ public class TableauView {
     }
     
     public void show() {
-        IO.write("En proceso...");
+        IO.writeln("Vista de tablero en proceso...");
         // TODO
     }
 

@@ -13,7 +13,8 @@ public class MovementFromPileToFoundation extends Movement {
     @Override
     public void execute() {
         // TODO Auto-generated method stub
-        
+        IO.write("Pile to foundation: coming soon...");
+        moveController.moveFromPileToFoundation();
     }
 
 }

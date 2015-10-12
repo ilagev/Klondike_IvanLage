@@ -13,7 +13,8 @@ public class MovementDiscover extends Movement {
     @Override
     public void execute() {
         // TODO Auto-generated method stub
-        
+        IO.write("Discover: coming soon...");
+        moveController.moveDiscover();
     }
 
 }

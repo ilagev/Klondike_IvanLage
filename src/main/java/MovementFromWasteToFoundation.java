@@ -13,7 +13,8 @@ public class MovementFromWasteToFoundation extends Movement {
     @Override
     public void execute() {
         // TODO Auto-generated method stub
-        
+        IO.write("Waste to foundation: coming soon...");
+        moveController.moveFromWasteToFoundation();
     }
 
 }
