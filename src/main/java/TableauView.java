@@ -67,9 +67,8 @@ public class TableauView {
         if (waste.empty()) {
             IO.writeln("<vacio>");
         } else {
-            for (int i = 0; i < waste.size(); i++) {
-                showCard(waste.cardAt(i));
-            }
+            showCard(waste.top());
+            IO.writeln("");
         }
     }
 

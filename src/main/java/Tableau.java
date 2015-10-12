@@ -37,7 +37,7 @@ public class Tableau {
     private void createPiles() {
         piles = new HashMap<Integer, CardSet>();
         for (int i = 1; i <= PILES_NUMBER; i++) {
-            piles.put(i, cardSetFactory.getPile(PILES_NUMBER - 1));
+            piles.put(i, cardSetFactory.getPile(i - 1));
         }
     }
 
