@@ -1,7 +1,9 @@
 
+import cards.Suit;
 import cards.Value;
 import cards.collection.Waste;
 import cards.collection.Foundation;
+import cards.collection.Pile;
 
 public class MoveController {
     
@@ -68,8 +70,26 @@ public class MoveController {
         return possible;
     }
     
-    public void moveFromWasteToPile() {
-        // TODO
+    public void moveFromWasteToPile(int pileNumber) {
+        tableau.getPiles().get(pileNumber).insert(tableau.getWaste().retrieve());
+    }
+    
+    public boolean isPossibleMoveFromWasteToPile(int pileNumber) {
+        boolean possible = false;
+        Pile pile = (Pile) tableau.getPiles().get(pileNumber);
+        Waste waste = (Waste) tableau.getWaste();
+        
+        if (!waste.empty()) {
+            if (pile.empty()) {
+                possible = waste.top().getValue() == Value.KING;
+            } else {
+                possible = pile.top().isThePreviousValueFromMe(waste.top()) &&
+                               Suit.getColor(pile.top().getSuit()) !=
+                               Suit.getColor(waste.top().getSuit());
+            }
+        }
+        
+        return possible;
     }
     
     public void moveDiscover() {

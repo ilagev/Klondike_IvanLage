@@ -17,7 +17,7 @@ public enum Suit {
         return this.value;
     }
     
-    public Color getColor(Suit suit) {
+    public static Color getColor(Suit suit) {
         return suit == Suit.DIAMOND || suit == Suit.HEART ? Color.RED : Color.BLACK;
     }
 }

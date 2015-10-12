@@ -23,6 +23,10 @@ public class Card {
         return this.value.ordinal() == card.getValue().ordinal() - 1; 
     }
     
+    public boolean isThePreviousValueFromMe(Card card) {
+        return this.value.ordinal() == card.getValue().ordinal() + 1; 
+    }
+    
     public boolean isTheSameSuit(Card card) {
         return this.suit == card.getSuit();
     }
