@@ -1,9 +1,5 @@
 
-import cards.Suit;
-import cards.Value;
 import cards.collection.Waste;
-import cards.collection.Foundation;
-import cards.collection.Pile;
 
 public class MoveController {
     
@@ -24,15 +20,18 @@ public class MoveController {
         return false;
     }
     
-    public void moveFromDeckToWaste() {
-        this.moveFromWasteToDeck();
-        while (tableau.getWaste().size() < Waste.MAX_CARDS) {
-            tableau.getWaste().insert(tableau.getDeck().retrieve());
-        }
+    public void moveDiscover() {
+        // TODO
     }
     
-    public void moveFromFoundationToPile() {
-        // TODO
+    public void moveFromFoundationToPile(int foundationNumber, int pileNumber) {
+        tableau.getPiles().get(pileNumber).insert(tableau.getFoundations().get(foundationNumber).retrieve());
+    }
+    
+    public boolean isPossibleMoveFromFoundationToPile(int foundationNumber, int pileNumber) {
+        return !tableau.getFoundations().get(foundationNumber).empty() &&
+                tableau.canPutOnPile(tableau.getFoundations().get(foundationNumber),
+                                     tableau.getPiles().get(pileNumber));
     }
     
     public void moveFromPileToFoundation() {
@@ -41,6 +40,13 @@ public class MoveController {
     
     public void moveFromPileToPile() {
         // TODO
+    }
+    
+    public void moveFromDeckToWaste() {
+        this.moveFromWasteToDeck();
+        while (tableau.getWaste().size() < Waste.MAX_CARDS) {
+            tableau.getWaste().insert(tableau.getDeck().retrieve());
+        }
     }
     
     public void moveFromWasteToDeck() {
@@ -54,20 +60,9 @@ public class MoveController {
     }
     
     public boolean isPossibleMoveFromWasteToFoundation(int foundationNumber) {
-        boolean possible = false;
-        Foundation foundation = (Foundation) tableau.getFoundations().get(foundationNumber);
-        Waste waste = (Waste) tableau.getWaste();
-        
-        if (!waste.empty()) {
-            if (foundation.empty()) {
-                possible = waste.top().getValue() == Value.ACE;
-            } else {
-                possible = foundation.top().isTheNextValueFromMe(waste.top()) &&
-                           foundation.top().isTheSameSuit(waste.top());
-            }
-        }
-        
-        return possible;
+            return !tableau.getWaste().empty() &&
+                    tableau.canPutOnFoundation(tableau.getWaste(),
+                                               tableau.getFoundations().get(foundationNumber));
     }
     
     public void moveFromWasteToPile(int pileNumber) {
@@ -75,25 +70,9 @@ public class MoveController {
     }
     
     public boolean isPossibleMoveFromWasteToPile(int pileNumber) {
-        boolean possible = false;
-        Pile pile = (Pile) tableau.getPiles().get(pileNumber);
-        Waste waste = (Waste) tableau.getWaste();
-        
-        if (!waste.empty()) {
-            if (pile.empty()) {
-                possible = waste.top().getValue() == Value.KING;
-            } else {
-                possible = pile.top().isThePreviousValueFromMe(waste.top()) &&
-                               Suit.getColor(pile.top().getSuit()) !=
-                               Suit.getColor(waste.top().getSuit());
-            }
-        }
-        
-        return possible;
+        return !tableau.getWaste().empty() &&
+                tableau.canPutOnPile(tableau.getWaste(),
+                                     tableau.getPiles().get(pileNumber));
     }
     
-    public void moveDiscover() {
-        // TODO
-    }
-
 }

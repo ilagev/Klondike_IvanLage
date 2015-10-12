@@ -82,6 +82,33 @@ public class Tableau {
         return cards;
     }
     
+    public boolean canPutOnFoundation(CardSet from, CardSet to) {
+        boolean possible = false;
+        
+        if (to.empty()) {
+            possible = from.top().getValue() == Value.ACE;
+        } else {
+            possible = to.top().isTheNextValueFromMe(from.top()) &&
+                       to.top().isTheSameSuit(from.top());
+        }
+        
+        return possible;
+    }
+    
+    public boolean canPutOnPile(CardSet from, CardSet to) {
+        boolean possible = false;
+        
+        if (from.empty()) {
+            possible = to.top().getValue() == Value.KING;
+        } else {
+            possible = from.top().isThePreviousValueFromMe(to.top()) &&
+                           Suit.getColor(from.top().getSuit()) !=
+                           Suit.getColor(to.top().getSuit());
+        }
+        
+        return possible;
+    }
+    
     public Map<Integer, CardSet> getPiles() {
         return piles;
     }

@@ -12,9 +12,17 @@ public class MovementFromFoundationToPile extends Movement {
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        IO.write("Foundation to pile: coming soon...");
-        moveController.moveFromFoundationToPile();
+        LimitedIntDialog dialogFoundation =
+                new LimitedIntDialog("Numero de palo? ", 1, Tableau.FOUNDATIONS_NUMBER);
+        LimitedIntDialog dialogPile =
+                new LimitedIntDialog("Numero de escalera? ", 1, Tableau.PILES_NUMBER);
+        int foundation = dialogFoundation.read();
+        int pile = dialogPile.read();
+        if (moveController.isPossibleMoveFromFoundationToPile(foundation, pile)) {
+            moveController.moveFromFoundationToPile(foundation, pile);
+        } else {
+            IO.writeln("[ERROR] No se puede mover de la escalera " + pile + " al palo " + foundation);
+        }
     }
 
 }
