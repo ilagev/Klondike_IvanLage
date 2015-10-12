@@ -33,8 +33,14 @@ public class Deck extends CardSet {
         return this.cards.isEmpty();
     }
     
+    @Override
     public int size() {
         return this.cards.size();
+    }
+    
+    @Override
+    public Card cardAt(int index) {
+        throw new UnsupportedOperationException();
     }
 
 }

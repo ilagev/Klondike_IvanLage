@@ -32,8 +32,14 @@ public class Foundation extends CardSet {
         return this.cards.isEmpty();
     }
     
+    @Override
     public int size() {
         return this.cards.size();
+    }
+    
+    @Override
+    public Card cardAt(int index) {
+        return this.cards.get(index);
     }
 
 }

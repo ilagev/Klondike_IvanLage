@@ -21,7 +21,7 @@ public class MovementFromFoundationToPile extends Movement {
         if (moveController.isPossibleMoveFromFoundationToPile(foundation, pile)) {
             moveController.moveFromFoundationToPile(foundation, pile);
         } else {
-            IO.writeln("[ERROR] No se puede mover de la escalera " + pile + " al palo " + foundation);
+            IO.writeln("[ERROR] No se puede mover del palo " + foundation + " a escalera " + pile);
         }
     }
 

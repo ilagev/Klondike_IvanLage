@@ -14,4 +14,6 @@ public abstract class CardSet {
     
     public abstract int size();
     
+    public abstract Card cardAt(int index);
+    
 }

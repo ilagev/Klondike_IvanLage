@@ -12,9 +12,14 @@ public class MovementDiscover extends Movement {
 
     @Override
     public void execute() {
-        // TODO Auto-generated method stub
-        IO.write("Discover: coming soon...");
-        moveController.moveDiscover();
+        LimitedIntDialog dialog =
+                new LimitedIntDialog("De que escalera? ", 1, Tableau.PILES_NUMBER);
+        int pile = dialog.read();
+        if (moveController.isPossibleMoveDiscover(pile)) {
+            moveController.moveDiscover(pile);
+        } else {
+            IO.writeln("[ERROR] La primera carta de la escalera " + pile + " ya esta destapada");
+        }
     }
 
 }

@@ -95,14 +95,14 @@ public class Tableau {
         return possible;
     }
     
-    public boolean canPutOnPile(CardSet from, CardSet to) {
+    public boolean canPutOnPile(Card from, CardSet to) {
         boolean possible = false;
         
-        if (from.empty()) {
+        if (to.empty()) {
             possible = to.top().getValue() == Value.KING;
         } else {
-            possible = from.top().isThePreviousValueFromMe(to.top()) &&
-                           Suit.getColor(from.top().getSuit()) !=
+            possible = from.isThePreviousValueFromMe(to.top()) &&
+                           Suit.getColor(from.getSuit()) !=
                            Suit.getColor(to.top().getSuit());
         }
         
