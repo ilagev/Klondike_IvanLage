@@ -41,11 +41,11 @@ public class GameView {
             
             if (option == exitOption) {
                 MoveController.EXIT_FLAG = true;
-                IO.write("Gracias por jugar!!");
             } else {
                 menu.execute(keys[option - 1]); // index 0..N-1 vs 1..N
             }
         } while (!moveController.endOfTheGame() && !MoveController.EXIT_FLAG);
+        IO.write("Gracias por jugar!!");
     }
     
     private void showMenu(String[] keys) {

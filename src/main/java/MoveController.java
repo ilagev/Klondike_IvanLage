@@ -1,6 +1,7 @@
 
 import cards.collection.Pile;
 import cards.collection.Waste;
+import cards.Value;
 
 public class MoveController {
     
@@ -17,8 +18,13 @@ public class MoveController {
     }
     
     public boolean endOfTheGame() {
-        // TODO
-        return false;
+        for (int i = 1; i <= Tableau.FOUNDATIONS_NUMBER; i++) {
+            if (tableau.getFoundations().get(i).empty() ||
+                tableau.getFoundations().get(i).top().getValue() != Value.KING) {
+                return false;
+            }
+        }
+        return true;
     }
     
     public void moveDiscover(int pileNumber) {
